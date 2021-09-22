@@ -17,13 +17,13 @@ function register_user($title,$first_name,$last_name,$email,$password) {
 }
 
 
-function login_user($email,$password) {  // PASSWORD = 12345
+function login_user($email,$password) {
     global $db;
-    $user_password = getPasswordFromDb($email); // $2y$10$MMfqcUeWZdnuk1ak2FcW5uBg5Kh.QdSqSNUqn36lcq5WaEYilRTVC
-    if(!$user_password) {// PITAM DA LI UOPSTE POSTOJI PASSWORD
-        return false;// vracamo false u slucaju da nema passworda
+    $user_password = getPasswordFromDb($email);
+    if(!$user_password) {
+        return false;
     }
-    if(!password_verify($password,$user_password)) { // WRONG PASSWORD 
+    if(!password_verify($password,$user_password)) {
             return false;
     }
     $sql = $db->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
@@ -39,13 +39,13 @@ function login_user($email,$password) {  // PASSWORD = 12345
     }
 }
 
-function getPasswordFromDb($email) { // filip88ks
+function getPasswordFromDb($email) {
      global $db;
      $sql = $db->prepare("SELECT password FROM users WHERE email = ?");
-     $sql->bind_param('s',$email);// bind param da poveze znak pitanja sa email-om
+     $sql->bind_param('s',$email);
      $sql->execute();
-     $result = $sql->get_result();// GET RESULT FROM MYSQL U OVOM SLUCAJU JE PASSWORD
-     if($result->num_rows == 0) {// num row je broj redova tj koliko redova mi je vratila baza
+     $result = $sql->get_result();
+     if($result->num_rows == 0) {
          return false;
      }
      $password = $result->fetch_assoc()["password"];
