@@ -2,7 +2,7 @@
 $title = "Change email";
 require('../core/init.php');
 
-if(!isLogged()){// Da li nije logovan, sto znaci uci ce u if ako korisnik nije logovan
+if(!isLogged()){
     header('Location: /facebook_app/index.php');
 }
 
