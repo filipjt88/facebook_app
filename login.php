@@ -36,12 +36,3 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 require('views/login.view.php');
-
-
-// function info() {
-  
-// }
-
-// if(info()) {
-//   echo "danilo";
-// }
