@@ -8,7 +8,7 @@ function register_user($title,$first_name,$last_name,$email,$password) {
     $sql->bind_param('ssssss',$title,$first_name,$last_name,$email,$password_hash,$role); 
     $sql->execute();
 
-    if($sql->errno == 0){ //errno je error number
+    if($sql->errno == 0){
         $_SESSION["id"] = $sql->insert_id;
         header('Location: user/home.php');
     } else {
