@@ -4,8 +4,8 @@ function register_user($title,$first_name,$last_name,$email,$password) {
     global $db;
     $role = "user";
     $password_hash = password_hash($password,PASSWORD_DEFAULT);
-    $sql = $db->prepare("INSERT INTO users(title,first_name,last_name,email,password,role) VALUES (?,?,?,?,?,?)"); // pripremi sql
-    $sql->bind_param('ssssss',$title,$first_name,$last_name,$email,$password_hash,$role); // stavi sta su znakovi pitanja 
+    $sql = $db->prepare("INSERT INTO users(title,first_name,last_name,email,password,role) VALUES (?,?,?,?,?,?)"); 
+    $sql->bind_param('ssssss',$title,$first_name,$last_name,$email,$password_hash,$role); 
     $sql->execute(); // izvrsi
 
     if($sql->errno == 0){ //errno je error number
@@ -33,7 +33,7 @@ function login_user($email,$password) {  // PASSWORD = 12345
         $result = $sql->get_result();
         $id = $result->fetch_assoc()["id"];
         $_SESSION["id"] = $id;
-        return true;  // RETURN VRATI SE KO ME JE POZVAO!!!!!!!!!!!!!!!!!!!!!!!
+        return true;
     } else {
         header('Location: error.php');
     }
@@ -48,8 +48,8 @@ function getPasswordFromDb($email) { // filip88ks
      if($result->num_rows == 0) {// num row je broj redova tj koliko redova mi je vratila baza
          return false;
      }
-     $password = $result->fetch_assoc()["password"]; // $2y$10$MMfqcUeWZdnuk1ak2FcW5uBg5Kh.QdSqSNUqn36lcq5WaEYilRTVC   ["password"=>"$2y$10$MMfqcUeWZdnuk1ak2FcW5uBg5Kh.QdSqSNUqn36lcq5WaEYilRTVC"];
-     return $password; // $2y$10$MMfqcUeWZdnuk1ak2FcW5uBg5Kh.QdSqSNUqn36lcq5WaEYilRTVC
+     $password = $result->fetch_assoc()["password"];
+     return $password;
 }
 
 
@@ -69,8 +69,8 @@ function getUser($id) {
    $sql = $db->prepare("SELECT * FROM users WHERE id = ?");
    $sql->bind_param('i',$id);
    $sql->execute();
-   $result = $sql->get_result();     // id,1; name,milna; . . .
-   $user = $result->fetch_assoc();  // ["id"=>"1","name"=>"milan"];
+   $result = $sql->get_result();   
+   $user = $result->fetch_assoc();
    return $user;
 }
 
@@ -130,7 +130,7 @@ function change_password($current_password,$password,$email,$id) {
         return false;
      }
 
-     if(!password_verify($current_password,$user_password)) { // $current_password = 12345      $user_password =$2y$10$bxe1cW2op.4EKe0SGrc7IO01IJFASII/Ayxh9dM2pKqk7dsLE9Xem; ako prodje provera  ! - znak uzvika je u ovom slucaju udji u if samo ako nesto nije OK (ako passwordi nisu isti)
+     if(!password_verify($current_password,$user_password)) {
           return false;
      }
 
