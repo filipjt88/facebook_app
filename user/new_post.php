@@ -2,7 +2,7 @@
 $title = "New post";
 require('../core/init.php');
 
-if(!isLogged()){ // Da li nije logovan, sto znaci uci ce u if ako korisnik nije logovan
+if(!isLogged()){
     header('Location: /facebook_app/index.php');
 }
 
@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         array_push($errors,$file_error);
     }
 
-    $cat = $_POST["category"]; // database category POST
+    $cat = $_POST["category"];
 
     
     if(count($errors) == 0) {
