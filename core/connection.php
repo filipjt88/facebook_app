@@ -1,4 +1,4 @@
 <?php
 
 
-$db = mysqli_connect(HOST,USER,PASSWORD,DATABASE) or die("Problem sa konekcijom");
+$db = mysqli_connect(HOST,USER,PASSWORD,DATABASE) or die("Not connection to database");
