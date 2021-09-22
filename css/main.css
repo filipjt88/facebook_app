@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(236, 236, 236)!important;
+}
+
+.reset {
+    width: 177px;
+}
+
+.created_at {
+    display: flex!important;
+    justify-content: flex-end!important;
+    position: relative;
+    bottom: 35px;
+}
+
+.created_at_comment {
+    display: flex!important;
+    justify-content: flex-end!important;
+    position: relative;
+    top: 30px;
+}
+
+a {
+    text-decoration: none!important;
+    color: #000!important;
+}
+
+.list-group-item:hover {
+    background-color: blue!important;
+    transition: .4s ease;
+}
+
+.list-group-item a:hover {
+    color: #fff!important;
+}
+
+.list-group-flush > .list-group-item:hover {
+    background-color: #fff!important;
+    cursor: pointer;
+}
+
+.allcat:hover {
+    color: #fff!important;
+}
+
+.list-group a:hover {
+    color: #fff!important;
+}
