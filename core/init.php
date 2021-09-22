@@ -10,7 +10,4 @@ require('db_post_functions.php');
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// paleo
-// usage
-// PHP_SESSION_ON
-// PHP_SESSION_NONE
+
