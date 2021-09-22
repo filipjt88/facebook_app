@@ -44,9 +44,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-
-// if(1 == 1) echo "Danilo";
-
 require('views/register.view.php');
 
 ?>
